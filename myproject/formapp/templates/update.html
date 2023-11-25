@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Update{% endblock %}
+
+
+{% block content %}
+
+    <div class="container2">
+        <h1>Update Information</h1>
+        <form action="{% url 'upres' mem.id %}" method="post" onsubmit="return validateForm()"> <!-- Ensure the form method is set to POST -->
+            {% csrf_token %} <!-- Include CSRF token for security -->
+            <label for="first_name">First Name</label><br>
+            <input type="text" id="first_name" name="first_name" value="{{ mem.first_name }}" ><br>
+
+            <small><span class="error" id="first_name_error"></span></small><br>
+
+            <label for="last_name">Last Name</label><br>
+            <input type="text" id="last_name" name="last_name" value="{{ mem.last_name }}" ><br>
+
+            <small><span class="error" id="last_name_error"></span></small><br>
+
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" value="{{ mem.email }}" ><br>
+
+            <small><span class="error" id="email_error"></span></small><br>
+
+            <label for="birthdate">Birthdate</label><br>
+            <input type="date" id="birthdate" name="birthdate" value="{{ mem.birthdate }}" ><br>
+
+            <small><span class="error" id="birthdate_error"></span></small><br>
+
+            <label for="gender">Gender</label><br>
+            <select id="gender" name="gender" required>
+                <option value="" disabled>Select Gender</option>
+                <option value="M" {% if mem.gender == 'M' %} selected {% endif %}>Male</option>
+                <option value="F" {% if mem.gender == 'F' %} selected {% endif %}>Female</option>
+            </select><br>
+            <small><span class="error" id="gender_error"></span></small><br>
+
+            <button type="submit" id="new1">Update</button>
+        </form>
+    </div>
+
+
+{% endblock %}

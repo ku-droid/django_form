@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Add{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="container1">
+        <h1>Fill in Your details</h1>
+        <form action="{% url 'adres' %}" method="post" onsubmit="return validateForm()"> <!-- Ensure the form method is set to POST -->
+            {% csrf_token %} <!-- Include CSRF token for security -->
+            <label for="first_name">First Name</label><br>
+            <input type="text" id="first_name" name="first_name" ><br>
+            <small><span class="error" id="first_name_error"></span></small><br>
+
+            <label for="last_name">Last Name</label><br>
+            <input type="text" id="last_name" name="last_name" ><br>
+            <small><span class="error" id="last_name_error"></span></small><br>
+
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" ><br>
+            <small><span class="error" id="email_error"></span></small><br>
+
+            <label for="birthdate">Birthdate</label><br>
+            <input type="date" id="birthdate" name="birthdate" ><br>
+            <small><span class="error" id="birthdate_error"></span></small><br>
+
+            <label for="gender">Gender</label><br>
+            <select id="gender" name="gender" >
+                <option value="" disabled selected>Select Gender</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select><br>
+            <small><span class="error" id="gender_error"></span></small><br>
+
+            <button type="submit" id="new">Submit</button>
+        </form>
+    </div>
+
+    {% endblock %}

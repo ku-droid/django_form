@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Default Title{% endblock %}</title>
+    {% block styles %}
+    <style>
+
+
+
+        .container, .container1, .container2 {
+            width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .container1, .container2{
+            width: 40%;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        #mid {
+            text-align: center;
+        }
+        
+        #up, #del {
+            padding: 8px 16px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 2px;
+        }
+        
+        #up:hover, #del:hover {
+            background-color: #45a049;
+        }
+        
+        #new3 {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        #new3:hover {
+            background-color: #45a049;
+        }
+
+
+
+    
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+    
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+    
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    
+        .error {
+            color: tomato;
+        }
+    
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    {% endblock %}
+    {% block scripts %}
+
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById('first_name').value.trim();
+            var lastName = document.getElementById('last_name').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var birthdate = document.getElementById('birthdate').value.trim();
+            var gender = document.getElementById('gender').value;
+
+            var firstNameError = document.getElementById('first_name_error');
+            var lastNameError = document.getElementById('last_name_error');
+            var emailError = document.getElementById('email_error');
+            var birthdateError = document.getElementById('birthdate_error');
+            var genderError = document.getElementById('gender_error');
+
+            firstNameError.innerHTML = '';
+            lastNameError.innerHTML = '';
+            emailError.innerHTML = '';
+            birthdateError.innerHTML = '';
+            genderError.innerHTML = '';
+
+            var isValid = true;
+
+            if (firstName === '') {
+                firstNameError.innerHTML = 'First Name is required';
+                isValid = false;
+            }
+
+            if (lastName === '') {
+                lastNameError.innerHTML = 'Last Name is required';
+                isValid = false;
+            }
+
+            if (email === '') {
+                emailError.innerHTML = 'Email is required';
+                isValid = false;
+            }
+
+            if (birthdate === '') {
+                birthdateError.innerHTML = 'Birthdate is required';
+                isValid = false;
+            }
+
+            if (gender === '') {
+                genderError.innerHTML = 'Gender is required';
+                isValid = false;
+            }
+
+            return isValid;
+        }
+    </script>
+    {% endblock %}
+</head>
+
+<body>
+    {% block content %}{% endblock %}
+</body>
+
+</html>

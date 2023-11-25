@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Details{% endblock %}
+
+{% block styles %}
+    {{ block.super }}
+    <style>
+        /* Additional styles specific to the add member page */
+        /* Override or add more styles */
+    </style>
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="container">
+        <h1>All Details</h1>
+        <table id="customers" border="1">
+            <thead>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Birthdate</th>
+                <th>Gender</th>
+                <th colspan="2" id="mid">Action</th>
+            </thead>
+            {% for x in mem %}
+                <tr>
+                    <td>{{ x.id }}</td>
+                    <td>{{ x.first_name }}</td>
+                    <td>{{ x.last_name }}</td>
+                    <td>{{ x.email }}</td>
+                    <td>{{ x.birthdate }}</td>
+                    <td>{{ x.gender }}</td>
+                    <td>
+                        <a href="/update/{{x.id}}"><button id='up'>Update</button></a>
+                    </td>
+                    <td>
+                        <a href="/delete/{{x.id}}"><button id='del'>Delete</button></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br><br>
+        <a href="{% url "add" %}"><button id="new3">Add Member</button></a>
+    </div>
+
+{% endblock %}
